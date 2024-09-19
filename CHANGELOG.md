@@ -1,3 +1,6 @@
+## [3.9.0]
+- Bump dependencies
+
 ## [3.8.0]
 - Bump dependencies
 
