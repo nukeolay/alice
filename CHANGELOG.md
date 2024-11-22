@@ -1,3 +1,6 @@
+## [3.9.1]
+- Long press share button to share cURL command
+
 ## [3.9.0]
 - Bump dependencies
 
