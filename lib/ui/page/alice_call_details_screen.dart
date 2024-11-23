@@ -69,9 +69,9 @@ class _AliceCallDetailsScreenState extends State<AliceCallDetailsScreen>
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        floatingActionButton: _LongPressHandler(
-          key: Key('long_press_handler_key'),
-          call: call,
+        floatingActionButton: GestureDetector(
+          key: Key('quick_share_action_key'),
+          onLongPress: () => widget.core.quickShareAction?.call(call),
           child: FloatingActionButton(
             backgroundColor: AliceConstants.lightRed(widget.customColors),
             key: Key('share_key'),
@@ -125,26 +125,5 @@ class _AliceCallDetailsScreenState extends State<AliceCallDetailsScreen>
     widgets.add(AliceCallResponseWidget(widget.call, widget.customColors));
     widgets.add(AliceCallErrorWidget(widget.call));
     return widgets;
-  }
-}
-
-class _LongPressHandler extends StatelessWidget {
-  const _LongPressHandler({
-    required this.child,
-    required this.call,
-    super.key,
-  });
-  final AliceHttpCall call;
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onLongPress: () => Share.share(
-        call.getCurlCommand(),
-        subject: 'cURL Command',
-      ),
-      child: child,
-    );
   }
 }
