@@ -76,8 +76,13 @@ class _AliceCallDetailsScreenState extends State<AliceCallDetailsScreen>
             backgroundColor: AliceConstants.lightRed(widget.customColors),
             key: Key('share_key'),
             onPressed: () async {
-              Share.share(await _getSharableResponseString(),
-                  subject: 'Request Details');
+              SharePlus.instance.share(
+                ShareParams(
+                  title: 'Alice - HTTP Call Details',
+                  subject: 'Request Details',
+                  text: await _getSharableResponseString(),
+                ),
+              );
             },
             child: Icon(Icons.share, color: Colors.white),
           ),

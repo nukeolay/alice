@@ -16,7 +16,7 @@ class AliceCore {
 
   /// Function which will be called on long press on share button.
   /// It has AliceHttpCall as argument and should be used to handle share action.
-  /// 
+  ///
   /// By default it will share cURL command.
   final void Function(AliceHttpCall aliceHttpCall)? quickShareAction;
 

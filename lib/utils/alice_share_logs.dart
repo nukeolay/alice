@@ -22,5 +22,11 @@ Future<XFile> saveLogs(List<AliceHttpCall> logs) async {
 }
 
 void shareFile(XFile file) {
-  Share.shareXFiles([file], subject: "Alice logs");
+  SharePlus.instance.share(
+    ShareParams(
+      files: [file],
+      title: 'Alice - HTTP Call Details',
+      subject: "Alice logs",
+    ),
+  );
 }

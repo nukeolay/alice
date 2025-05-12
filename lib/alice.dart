@@ -47,9 +47,11 @@ class Alice {
     void Function(AliceHttpCall aliceHttpCall)? quickShareAction,
   }) {
     final defaultQuickShareAction = (call) {
-      Share.share(
-        call.getCurlCommand(),
-        subject: 'cURL Command',
+      SharePlus.instance.share(
+        ShareParams(
+          text: call.getCurlCommand(),
+          subject: 'cURL Command',
+        ),
       );
     };
     final aliceCore = AliceCore(
