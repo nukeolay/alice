@@ -69,14 +69,18 @@ class _AliceCallDetailsScreenState extends State<AliceCallDetailsScreen>
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: AliceConstants.lightRed(widget.customColors),
-          key: Key('share_key'),
-          onPressed: () async {
-            Share.share(await _getSharableResponseString(),
-                subject: 'Request Details');
-          },
-          child: Icon(Icons.share, color: Colors.white),
+        floatingActionButton: GestureDetector(
+          key: Key('quick_share_action_key'),
+          onLongPress: () => widget.core.quickShareAction?.call(call),
+          child: FloatingActionButton(
+            backgroundColor: AliceConstants.lightRed(widget.customColors),
+            key: Key('share_key'),
+            onPressed: () async {
+              Share.share(await _getSharableResponseString(),
+                  subject: 'Request Details');
+            },
+            child: Icon(Icons.share, color: Colors.white),
+          ),
         ),
         appBar: AppBar(
           bottom: TabBar(

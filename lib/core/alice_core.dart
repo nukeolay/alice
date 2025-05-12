@@ -14,12 +14,18 @@ class AliceCore {
       BehaviorSubject.seeded([]);
   final AliceCustomColors customColors;
 
+  /// Function which will be called on long press on share button.
+  /// It has AliceHttpCall as argument and should be used to handle share action.
+  /// 
+  /// By default it will share cURL command.
+  final void Function(AliceHttpCall aliceHttpCall)? quickShareAction;
+
   GlobalKey<NavigatorState> _navigatorKey;
   bool _isInspectorOpened = false;
   StreamSubscription? _callsSubscription;
 
   /// Creates alice core instance
-  AliceCore(this._navigatorKey, this.customColors);
+  AliceCore(this._navigatorKey, this.customColors, [this.quickShareAction]);
 
   /// Dispose subjects and subscriptions
   void dispose() {

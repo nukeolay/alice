@@ -9,6 +9,7 @@ import 'package:alice_lightweight/model/alice_http_call.dart';
 import 'package:alice_lightweight/utils/alice_custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:share_plus/share_plus.dart';
 
 export 'package:alice_lightweight/utils/alice_custom_colors.dart';
 
@@ -43,8 +44,19 @@ class Alice {
     )
     bool darkTheme = false,
     AliceCustomColors customColors = const AliceCustomColors(),
+    void Function(AliceHttpCall aliceHttpCall)? quickShareAction,
   }) {
-    final aliceCore = AliceCore(navigatorKey, customColors);
+    final defaultQuickShareAction = (call) {
+      Share.share(
+        call.getCurlCommand(),
+        subject: 'cURL Command',
+      );
+    };
+    final aliceCore = AliceCore(
+      navigatorKey,
+      customColors,
+      quickShareAction ?? defaultQuickShareAction,
+    );
     final httpClientAdapter = AliceHttpClientAdapter(aliceCore);
     final httpAdapter = AliceHttpAdapter(aliceCore);
 

@@ -1,3 +1,6 @@
+## [3.9.1]
+- Added `quickShareAction` property. This action will be called on long press on share button. It has AliceHttpCall as argument and should be used to handle share action. By default it will share cURL command.
+
 ## [3.9.0]
 - Bump dependencies
 
