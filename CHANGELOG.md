@@ -1,3 +1,6 @@
+## [3.11.0]
+- Bump dependencies (share_plus 12.0.0)
+
 ## [3.10.0]
 - Bump dependencies
 
